@@ -20,11 +20,12 @@ body {
 .logo img {
   width: 100px;
   height: 100px;
+  border-radius: 10px;
 }
 
 /* Style the welcome message */
 .welcome {
-  text-align: right;
+  text-align: left;
   font-size: 18px;
   color: #333;
 }
@@ -38,6 +39,7 @@ body {
 .quote {
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
 }
@@ -53,6 +55,7 @@ body {
 .tasks {
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
   float: left;
@@ -79,6 +82,7 @@ body {
 .progress {
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
   float: right;
@@ -89,6 +93,7 @@ body {
 .joke {
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
   clear: both;
@@ -108,5 +113,6 @@ body {
   background-color: #333;
   color: #fff;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
 }
