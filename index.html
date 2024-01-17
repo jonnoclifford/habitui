@@ -4,21 +4,32 @@
   <meta charset="utf-8" />
   <title>HabitUI</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
     <div class="logo">
       <img src="./assets/images/HabitUI_Logo.png" alt="HabitUI logo" />
     </div>
+
+    <div class="toggle-container">
+      <label class="toggle-label">
+        <span>Dark Mode</span>
+        <input type="checkbox" class="toggle-input" id="darkModeToggle">
+      </label>
+    </div>
+
     <div class="welcome">
       <p>Welcome, <span class="username">username</span></p>
     </div>
+
     <div class="quote">
       <h2>Inspirational quote</h2>
       <p class="quote-text"></p>
     </div>
+
     <div class="tasks">
+
       <h2>Tasks</h2>
 
       <div class="container task-container">
@@ -69,6 +80,10 @@
       <button id="joke-button">Get a new joke</button>
     </div>
   </div>
-  <script src="./assets/script.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>
