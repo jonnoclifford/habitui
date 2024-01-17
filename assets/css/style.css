@@ -65,6 +65,43 @@ body {
   padding: 0;
 }
 
+/* JC - Tasks using bootstrap */
+
+    /* Custom styles for the container */
+    .task-container {
+      width: 60%;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    /* Custom styles for the task list */
+    .task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    /* Custom styles for each task item */
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    /* Custom styles for the task text */
+    .task-text {
+      width: 90%;
+      text-align: left;
+      padding-left: 15px;
+    }
+
+    /* Custom styles for the buttons */
+    .task-btn {
+      width: 10%;
+    }
+
 /* Style the task items */
 .task-list li {
   margin: 10px 0;
