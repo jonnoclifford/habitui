@@ -1,0 +1,112 @@
+/* CSS code for the website */
+
+/* Use a custom font from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Set the font and background color for the whole page */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Center the main container and give it some padding and margin */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the logo image */
+.logo img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Style the welcome message */
+.welcome {
+  text-align: right;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Style the username */
+.username {
+  font-weight: bold;
+}
+
+/* Style the quote section */
+.quote {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Style the quote text */
+.quote-text {
+  font-style: italic;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Style the tasks section */
+.tasks {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  float: left;
+  width: 50%;
+}
+
+/* Style the task list */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style the task items */
+.task-list li {
+  margin: 10px 0;
+}
+
+/* Style the task checkboxes */
+.task-list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Style the progress section */
+.progress {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  float: right;
+  width: 40%;
+}
+
+/* Style the joke section */
+.joke {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  clear: both;
+}
+
+/* Style the joke text */
+.joke-text {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Style the joke button */
+.joke-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

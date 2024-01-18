@@ -1,13 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Document</title>
+  <meta charset="utf-8" />
+  <title>HabitUI</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-
+  <div class="container">
+    <div class="logo">
+      <img src="./assets/images/HabitUI_Logo.png" alt="HabitUI logo" />
+    </div>
+    <div class="welcome">
+      <p>Welcome, <span class="username">username</span></p>
+    </div>
+    <div class="quote">
+      <h2>Inspirational quote</h2>
+      <p class="quote-text"></p>
+    </div>
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <ul class="task-list">
+        <li><input type="checkbox" id="task1" /><label for="task1">Task 1</label></li>
+        <li><input type="checkbox" id="task2" /><label for="task2">Task 2</label></li>
+        <li><input type="checkbox" id="task3" /><label for="task3">Task 3</label></li>
+        <li><input type="checkbox" id="task4" /><label for="task4">Task 4</label></li>
+        <li><input type="checkbox" id="task5" /><label for="task5">Task 5</label></li>
+      </ul>
+    </div>
+    <div class="progress">
+      <h2>Progress</h2>
+      <canvas id="progress-chart" width="300" height="300"></canvas>
+    </div>
+    <div class="joke">
+      <h2>Joke Generator</h2>
+      <p class="joke-text"></p>
+      <button id="joke-button">Get a new joke</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/API.js"></script>
+  
 </body>
 </html>
