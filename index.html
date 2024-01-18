@@ -11,7 +11,7 @@
     <div class="logo">
       <img src="./assets/images/HabitUI_Logo.png" alt="HabitUI logo" />
     </div>
-
+ 
     <div class="toggle-container">
       <label class="toggle-label">
         <span>Dark Mode</span>
@@ -28,6 +28,21 @@
       <p class="quote-text" id="inspirational-quote"></p>
     </div>
 
+  <!-- City search box -->
+  <div class="search-box">
+    <form id="search-form">
+      <label for="search-input">Enter City:</label>
+      <input type="text" id="search-input" placeholder="E.g., London">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- Display weather information -->
+  <div id="weather-info">
+    <h2>Weather Information</h2>
+    <!-- Display weather details here -->
+    <div id="current-weather" class="weather-box"></div>
+  </div>
     <div class="tasks">
 
       <h2>Tasks</h2>
@@ -81,9 +96,10 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/API.js"></script>
 </body>
 </html>
+
