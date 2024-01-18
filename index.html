@@ -4,28 +4,71 @@
   <meta charset="utf-8" />
   <title>HabitUI</title>
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
     <div class="logo">
       <img src="./assets/images/HabitUI_Logo.png" alt="HabitUI logo" />
     </div>
+
+    <div class="toggle-container">
+      <label class="toggle-label">
+        <span>Dark Mode</span>
+        <input type="checkbox" class="toggle-input" id="darkModeToggle">
+      </label>
+    </div>
+
     <div class="welcome">
       <p>Welcome, <span class="username">username</span></p>
     </div>
+
     <div class="quote">
       <h2>Inspirational quote</h2>
       <p class="quote-text"></p>
     </div>
+
     <div class="tasks">
+
       <h2>Tasks</h2>
-      <ul class="task-list">
+
+      <div class="container task-container">
+        <ul class="task-list">
+          <li class="task-item">
+            <div class="task-number">1.</div>
+            <div class="task-text">Task 1</div>
+            <button class="btn btn-success task-btn">✔️</button>
+          </li>
+          <li class="task-item">
+            <div class="task-number">2.</div>
+            <div class="task-text">Task 2</div>
+            <button class="btn btn-success task-btn">✔️</button>
+          </li>
+          <li class="task-item">
+            <div class="task-number">3.</div>
+            <div class="task-text">Task 3</div>
+            <button class="btn btn-success task-btn">✔️</button>
+          </li>
+          <li class="task-item">
+            <div class="task-number">4.</div>
+            <div class="task-text">Task 4</div>
+            <button class="btn btn-success task-btn">✔️</button>
+          </li>
+          <li class="task-item">
+            <div class="task-number">5.</div>
+            <div class="task-text">Task 5</div>
+            <button class="btn btn-success task-btn">✔️</button>
+          </li>
+        </ul>
+
+      <!-- <ul class="task-list">
         <li><input type="checkbox" id="task1" /><label for="task1">Task 1</label></li>
         <li><input type="checkbox" id="task2" /><label for="task2">Task 2</label></li>
         <li><input type="checkbox" id="task3" /><label for="task3">Task 3</label></li>
         <li><input type="checkbox" id="task4" /><label for="task4">Task 4</label></li>
         <li><input type="checkbox" id="task5" /><label for="task5">Task 5</label></li>
-      </ul>
+      </ul> -->
+
     </div>
     <div class="progress">
       <h2>Progress</h2>
@@ -38,8 +81,9 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/API.js"></script>
-  
 </body>
 </html>
