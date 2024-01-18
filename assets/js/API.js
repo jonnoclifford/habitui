@@ -44,6 +44,3 @@ const quotableApiUrl = 'https://api.quotable.io/random';
 }
 }
 getMotivationalQuote();
-
-// Example of using the function
-getMotivationalQuote().then(quote => console.log(quote));
