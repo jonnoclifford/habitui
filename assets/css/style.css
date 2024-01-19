@@ -9,13 +9,15 @@ body {
   background-color: #f0f0f0;
 }
 
-/* Center the main container and give it some padding and margin */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+.row {
+  padding: 15px;
+}
 /* Style the logo image */
 .logo img {
   width: auto;
@@ -51,15 +53,18 @@ body {
   text-align: center;
 }
 
+.quote-author {
+  font-style: italic;
+  font-size: 14px;
+  text-align: right;
+}
+
+
 /* Style the tasks section */
 .tasks {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  float: left;
-  width: 50%;
 }
 
 /* Style the task list */
@@ -73,9 +78,10 @@ body {
     /* Custom styles for the container */
     .task-container {
       width: 60%;
-      margin: 20px auto;
-      border: 1px solid #ccc;
-      padding: 20px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
     }
 
     /* Custom styles for the task list */
@@ -83,6 +89,11 @@ body {
       list-style-type: none;
       padding: 0;
     }
+
+    .new-habbit {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+  }
 
     /* Custom styles for each task item */
     .task-item {
@@ -116,14 +127,11 @@ body {
 }
 
 /* Style the progress section */
-.progress {
+.prog {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  float: right;
-  width: 40%;
+  max-height: 50vh;
 }
 
 /* Style the joke section */
@@ -138,8 +146,11 @@ body {
 
 /* Style the joke text */
 .joke-text {
-  font-size: 18px;
+  font-size: 2rem;
   text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 /* Style the joke button */
@@ -187,3 +198,14 @@ body {
       margin-top: 20px;
   }
     
+  /* Media query for mobile view */
+@media screen and (max-width: 767px) {
+  .new-habbit {
+      display: grid;
+      grid-template-columns: 1fr;
+      font-size: 2rem;
+  }
+  .tasks {
+      margin-bottom: 30px;
+  }
+}
