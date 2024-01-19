@@ -49,7 +49,7 @@ body {
 /* Style the quote text */
 .quote-text {
   font-style: italic;
-  font-size: 24px;
+  font-size: 1.25rem;
   text-align: center;
 }
 
@@ -94,6 +94,11 @@ body {
       display: grid;
       grid-template-columns: 2fr 1fr;
   }
+
+    #addHabitBtn {
+      background-color: rgba(110, 74, 218, .75);
+      margin-left: 10px;
+    }
 
     /* Custom styles for each task item */
     .task-item {
@@ -146,7 +151,7 @@ body {
 
 /* Style the joke text */
 .joke-text {
-  font-size: 2rem;
+  font-size: 1.25rem;
   text-align: center;
   border: 2px solid black;
   border-radius: 10px;
@@ -164,6 +169,7 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+
 
 /* JC - Dark mode & Toggle Switch */
 
