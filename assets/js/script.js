@@ -46,13 +46,13 @@ function getJoke(){
         'Accept': 'application/json',
         'User-Agent': 'YourLibraryOrWebsite (YourURLOrEmail)'
     });
-    
+
     // API endpoint URL for fetching a random dad joke
     const apiUrl = 'https://icanhazdadjoke.com/';
-    
+
     // Get the joke container element
     const jokeContainer = document.querySelector('.joke-text');
-    
+
     // Fetch a random dad joke as JSON
     fetch(apiUrl, { headers })
         .then(response => response.json())
@@ -62,7 +62,7 @@ function getJoke(){
         // Access the joke using data.joke
         const joke = data.joke;
         console.log('Random Dad Joke:', joke);
-    
+
         // Display the joke in the jokeContainer
         jokeContainer.textContent = joke;
         })
@@ -145,9 +145,9 @@ function renderHabits() {
 
         habitItem.innerHTML = `
             <div class="task-text">${habit.name}: ${habit.count}</div>
-            <button title='Increase Habbit' class="btn btn-success task-btn" onclick="incrementHabit(${index})">+</button>
-            <button title='Decrease Habbit' class="btn btn-warning task-btn" onclick="decrementHabit(${index})">-</button>
-            <button title='Delete Habbit' class="btn btn-danger task-btn" onclick="deleteHabit(${index})">x</button>
+            <button title='Increase Habit' class="btn btn-success task-btn" onclick="incrementHabit(${index})">+</button>
+            <button title='Decrease Habit' class="btn btn-warning task-btn" onclick="decrementHabit(${index})">-</button>
+            <button title='Delete Habit' class="btn btn-danger task-btn" onclick="deleteHabit(${index})">x</button>
         `;
 
         habitsContainer.appendChild(habitItem);
@@ -167,7 +167,7 @@ function updateChart() {
     const data = habits.map(habit => habit.count);
 
     // Generate an array of random colors for each bar
-    const randomColors = Array.from({ length: habits.length }, () => getRandomColor());
+    // const randomColors = Array.from({ length: habits.length }, () => getRandomColor());
 
     window.myHabitsChart = new Chart(ctx, {
         type: 'bar',
@@ -176,7 +176,7 @@ function updateChart() {
             datasets: [{
                 label: 'Habit Count',
                 data: data,
-                backgroundColor: randomColors,
+                backgroundColor: 'rgba(110, 74, 218, .75)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
             }]
