@@ -9,27 +9,51 @@ body {
   background-color: #f0f0f0;
 }
 
-.main {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+/* Sidebar styles */
+.sidebar {
+  width: 25%; /* Set the width of the sidebar */
+  float: left; /* Float the sidebar to the left */
+  padding-right: 20px; /* Add some right padding for better separation */
 }
 
-.row {
-  padding: 15px;
+/* Header styles inside the sidebar */
+.sidebar .header {
+  margin-bottom: 20px;
 }
-/* Style the logo image */
-.logo img {
-  width: auto;
-  max-height: 60px;
+
+/* Logo styles */
+.sidebar .logo img {
+  width: 100%; /* Make the logo fill the width of its container */
+  max-height: auto; /* Set a maximum height for the logo */
   border-radius: 10px;
+  padding-top: 10px;
 }
 
-/* Style the welcome message */
-.welcome {
+/* Welcome message styles inside the sidebar */
+.sidebar .welcome {
   text-align: left;
   font-size: 18px;
   color: #333;
+  padding-top: 40px;
+}
+
+/* Weather box styles inside the sidebar */
+.sidebar .weather {
+  margin-top: 20px;
+}
+
+/* Main content styles */
+.main {
+  width: 75%; /* Set the width of the main content */
+  float: left; /* Float the main content to the left */
+  padding-left: 20px; /* Add some left padding for better separation */
+  border-left: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.main .row {
+  padding: 15px;
+  width: calc(100% - 20px);
 }
 
 /* Style the username */
@@ -43,7 +67,6 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px 0;
 }
 
 /* Style the quote text */
@@ -54,11 +77,9 @@ body {
 }
 
 .quote-author {
-  font-style: italic;
-  font-size: 14px;
   text-align: right;
+  margin-bottom: 0;
 }
-
 
 /* Style the tasks section */
 .tasks {
@@ -74,52 +95,51 @@ body {
 }
 
 /* JC - Tasks using bootstrap */
+/* Custom styles for the container */
+.task-container {
+  width: 60%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
 
-    /* Custom styles for the container */
-    .task-container {
-      width: 60%;
-        margin: 20px auto;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 20px;
-    }
+/* Custom styles for the task list */
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
 
-    /* Custom styles for the task list */
-    .task-list {
-      list-style-type: none;
-      padding: 0;
-    }
+.new-habit {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 
-    .new-habit {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-  }
+#addHabitBtn {
+  background-color: rgba(110, 74, 218, .75);
+  margin-left: 10px;
+}
 
-    #addHabitBtn {
-      background-color: rgba(110, 74, 218, .75);
-      margin-left: 10px;
-    }
+/* Custom styles for each task item */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
 
-    /* Custom styles for each task item */
-    .task-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      padding: 10px;
-    }
+/* Custom styles for the task text */
+.task-text {
+  width: 90%;
+  text-align: left;
+  padding-left: 15px;
+}
 
-    /* Custom styles for the task text */
-    .task-text {
-      width: 90%;
-      text-align: left;
-      padding-left: 15px;
-    }
-
-    /* Custom styles for the buttons */
-    .task-btn {
-      width: 10%;
-    }
+/* Custom styles for the buttons */
+.task-btn {
+  width: 10%;
+}
 
 /* Style the task items */
 .task-list li {
@@ -170,48 +190,72 @@ body {
   cursor: pointer;
 }
 
-
 /* JC - Dark mode & Toggle Switch */
 
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #333;
-      color: #fff;
-    }
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
 
-    /* Toggle switch styles */
-    .toggle-container {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-    }
+/* Toggle switch styles */
+.toggle-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 20px 0; /* Add some margin for spacing */
+}
 
-    .toggle-label {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      color: #fff;
-    }
+/* Adjust the dark mode label to ensure proper alignment */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
 
-    .toggle-input {
-      margin-left: 10px;
-    }
+.toggle-label.dark-mode {
+  color: #fff;
+}
+/* Ensure the dark mode input aligns with the label */
+.toggle-input {
+  margin-left: 10px;
+  margin-top: 0;
+  color: #333;
+}
 
-    /*weather box*/
-    #current-weather {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-top: 20px;
-  }
+/*weather box*/
+#current-weather {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: ;
+}
 
-  /* Media query for mobile view */
+#weather-info {
+  padding-top: 10px;
+}
+
+/* Media query for mobile view */
 @media screen and (max-width: 767px) {
-  .new-habbit {
-      display: grid;
-      grid-template-columns: 1fr;
-      font-size: 2rem;
+  .sidebar,
+  .main {
+    width: 100%; /* Make both sidebar and main content full width on small screens */
+    float: none; /* Remove the float on small screens */
+    padding: 0; /* Remove padding on small screens */
   }
+
+  /* Adjust the logo size for smaller screens */
+  .sidebar .logo img {
+    max-height: 40px; /* Adjust the maximum height for smaller screens */
+  }
+
+  .new-habbit {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 2rem;
+  }
+
   .tasks {
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
 }
