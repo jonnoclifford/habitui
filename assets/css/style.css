@@ -30,16 +30,16 @@ body {
 }
 
 /* Welcome message styles inside the sidebar */
-.sidebar .welcome {
+.sidebar .welcome h1{
   text-align: left;
   font-size: 18px;
-  color: #333;
   padding-top: 40px;
 }
 
 /* Weather box styles inside the sidebar */
-.sidebar .weather {
-  margin-top: 20px;
+.sidebar .weather h2{
+  margin-top: 0px;
+  font-size: 18px;
 }
 
 /* Main content styles */
@@ -195,7 +195,15 @@ body {
 /* Dark mode styles */
 body.dark-mode {
   background-color: #333;
+}
+
+/* Add explicit text color for dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode span,
+body.dark-mode #weather-info {
   color: #fff;
+  /* Set the desired text color for dark mode */
 }
 
 /* Toggle switch styles */
@@ -228,7 +236,7 @@ body.dark-mode {
 #current-weather {
   padding: 10px;
   margin-top: 20px;
-  margin-bottom: ;
+  margin-bottom: 0px;
 }
 
 #weather-info {
