@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (darkModeToggle.checked) {
       enableDarkMode();
       localStorage.setItem('darkMode', 'enabled');
+      updateLogoForDarkMode(true);
     } else {
       disableDarkMode();
       localStorage.setItem('darkMode', 'disabled');
+      updateLogoForDarkMode(false);
     }
   });
 
@@ -28,6 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function disableDarkMode() {
     body.classList.remove('dark-mode');
+  }
+
+  function updateLogoForDarkMode(isDarkMode) {
+    // Change logo based on dark mode
+    const logoImage = document.querySelector('.logo img');
+    logoImage.src = isDarkMode ? './assets/images/HabitUI_Logo_dark.png' : './assets/images/HabitUI_Logo.png';
   }
 });
 
@@ -91,9 +99,9 @@ function renderHabits() {
 
         habitItem.innerHTML = `
             <div class="task-text">${habit.name}: ${habit.count}</div>
-            <button title='Increase Habit' class="btn btn-success task-btn" onclick="incrementHabit(${index})">+</button>
-            <button title='Decrease Habit' class="btn btn-warning task-btn" onclick="decrementHabit(${index})">-</button>
-            <button title='Delete Habit' class="btn btn-danger task-btn" onclick="deleteHabit(${index})">x</button>
+            <button title='Increase Habit' class="btn btn-outline-success task-btn p-1 rounded-circle" onclick="incrementHabit(${index})">+</button>
+            <button title='Decrease Habit' class="btn btn-outline-warning task-btn p-1 rounded-circle ml-1" onclick="decrementHabit(${index})">-</button>
+            <button title='Delete Habit' class="btn btn-outline-danger task-btn p-1 rounded-circle ml-1" onclick="deleteHabit(${index})">x</button>
         `;
 
         habitsContainer.appendChild(habitItem);
