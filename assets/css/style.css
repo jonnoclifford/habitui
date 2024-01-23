@@ -33,7 +33,6 @@ body {
 .sidebar .welcome h1{
   text-align: left;
   font-size: 18px;
-  color: #333;
   padding-top: 40px;
 }
 
@@ -196,22 +195,15 @@ body {
 /* Dark mode styles */
 body.dark-mode {
   background-color: #333;
-  color: #fff;
 }
 
 /* Add explicit text color for dark mode */
-body.dark-mode p,
 body.dark-mode h1,
 body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6,
 body.dark-mode span,
-body.dark-mode div,
-body.dark-mode a,
-body.dark-mode li {
-  color: #fff; /* Set the desired text color for dark mode */
+body.dark-mode #weather-info {
+  color: #fff;
+  /* Set the desired text color for dark mode */
 }
 
 /* Toggle switch styles */
