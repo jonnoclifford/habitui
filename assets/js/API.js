@@ -27,22 +27,6 @@ function getWeatherData(cityName) {
     });
 }
 
-function getWeatherData(cityName) {
-    var apiKey = '155762a56bacbcb490402c8eeb8ef0b7';
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
-
-    $.ajax({
-        url: apiUrl,
-        method: "GET",
-        success: function (response) {
-            updateWeatherUI(response);
-        },
-        error: function (error) {
-            console.log("Error fetching weather data: ", error);
-        }
-    });
-}
-
 function updateWeatherUI(data) {
     var cityName = data.name;
     var temperature = data.main.temp;
