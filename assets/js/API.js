@@ -63,3 +63,62 @@ function updateWeatherUI(data) {
 
     $("#current-weather").html(weatherContent);
 }
+
+//joke function
+
+const jokeContainer = document.querySelector('.joke-text');
+
+function getJoke(){
+    // Set a custom User-Agent header as recommended
+    const headers = new Headers({
+        'Accept': 'application/json',
+        'User-Agent': 'YourLibraryOrWebsite (YourURLOrEmail)'
+    });
+
+    // API endpoint URL for fetching a random dad joke
+    const apiUrl = 'https://icanhazdadjoke.com/';
+
+    // Get the joke container element
+    const jokeContainer = document.querySelector('.joke-text');
+
+    // Fetch a random dad joke as JSON
+    fetch(apiUrl, { headers })
+        .then(response => response.json())
+        .then(data => {
+        // Handle the JSON response
+        console.log(data);
+        // Access the joke using data.joke
+        const joke = data.joke;
+        console.log('Random Dad Joke:', joke);
+
+        // Display the joke in the jokeContainer
+        jokeContainer.textContent = joke;
+        })
+        .catch(error => {
+        // Handle errors
+        console.error('Error fetching dad joke:', error);
+        });
+}
+
+getJoke();
+
+// inspirational function
+
+const inspirationalQuoteTextContainer = document.querySelector('.quote-text');
+const inspirationalQuoteAuthorContainer = document.querySelector('.quote-author');
+
+// Call the function to get an inspirational quote and update the DOM
+getInspirationalQuote().then(function (randomQuote) {
+    inspirationalQuoteTextContainer.innerHTML = `"${randomQuote.text}"`;
+    inspirationalQuoteAuthorContainer.innerHTML = `${randomQuote.author.split(',')[0].trim()}`;
+});
+
+// Function to get an inspirational quote
+function getInspirationalQuote() {
+    return fetch('https://type.fit/api/quotes')
+    .then(response => response.json())
+    .then(data => {
+        let randomIndex = Math.floor(Math.random() * data.length);
+        return data[randomIndex];
+    });
+}
