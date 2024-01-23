@@ -53,7 +53,7 @@ body {
 
 .main .row {
   padding: 15px;
-  width: calc(100% - 20px);
+  /* width: 100%; */
 }
 
 /* Style the username */
@@ -84,8 +84,8 @@ body {
 /* Style the tasks section */
 .tasks {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 10px; */
 }
 
 /* Style the task list */
@@ -120,6 +120,9 @@ body {
   margin-left: 10px;
 }
 
+.btn-space {
+  padding-left: 2px;
+}
 /* Custom styles for each task item */
 .task-item {
   display: flex;
@@ -154,8 +157,8 @@ body {
 /* Style the progress section */
 .prog {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 10px; */
   max-height: 50vh;
 }
 
@@ -165,7 +168,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px 0;
+  text-align: center;
+  /* margin: 20px 0; */
   clear: both;
 }
 
@@ -173,7 +177,7 @@ body {
 .joke-text {
   font-size: 1.25rem;
   text-align: center;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
 }
@@ -194,7 +198,7 @@ body {
 
 /* Dark mode styles */
 body.dark-mode {
-  background-color: #333;
+  background-color: #000000;
 }
 
 /* Add explicit text color for dark mode */
@@ -257,7 +261,7 @@ body.dark-mode #weather-info {
     max-height: 40px; /* Adjust the maximum height for smaller screens */
   }
 
-  .new-habbit {
+  .new-habit {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 2rem;
