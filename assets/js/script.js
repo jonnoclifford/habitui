@@ -1,34 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
 
-  // Check if the user has a preference for dark mode
-  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Check if the user has a preference for dark mode
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Set initial dark mode state
-  if (localStorage.getItem('darkMode') === 'enabled' || (prefersDarkMode && !localStorage.getItem('darkMode'))) {
-    enableDarkMode();
-    darkModeToggle.checked = true;
-  }
-
-  // Toggle dark mode
-  darkModeToggle.addEventListener('change', function () {
-    if (darkModeToggle.checked) {
-      enableDarkMode();
-      localStorage.setItem('darkMode', 'enabled');
-    } else {
-      disableDarkMode();
-      localStorage.setItem('darkMode', 'disabled');
+    // Set initial dark mode state
+    if (localStorage.getItem('darkMode') === 'enabled' || (prefersDarkMode && !localStorage.getItem('darkMode'))) {
+        enableDarkMode();
+        darkModeToggle.checked = true;
     }
-  });
 
-  function enableDarkMode() {
-    body.classList.add('dark-mode');
-  }
+    // Toggle dark mode
+    darkModeToggle.addEventListener('change', function () {
+        if (darkModeToggle.checked) {
+            enableDarkMode();
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            disableDarkMode();
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    });
 
-  function disableDarkMode() {
-    body.classList.remove('dark-mode');
-  }
+    function enableDarkMode() {
+        body.classList.add('dark-mode');
+    }
+
+    function disableDarkMode() {
+        body.classList.remove('dark-mode');
+    }
 });
 
 //habits function
@@ -40,7 +40,7 @@ const habitsChartCanvas = document.getElementById('habitsChart');
 const newHabitInput = document.getElementById('newTaskInput');
 const jokeContainer = document.querySelector('.joke-text');
 
-function getJoke(){
+function getJoke() {
     // Set a custom User-Agent header as recommended
     const headers = new Headers({
         'Accept': 'application/json',
@@ -57,18 +57,18 @@ function getJoke(){
     fetch(apiUrl, { headers })
         .then(response => response.json())
         .then(data => {
-        // Handle the JSON response
-        console.log(data);
-        // Access the joke using data.joke
-        const joke = data.joke;
-        console.log('Random Dad Joke:', joke);
+            // Handle the JSON response
+            console.log(data);
+            // Access the joke using data.joke
+            const joke = data.joke;
+            console.log('Random Dad Joke:', joke);
 
-        // Display the joke in the jokeContainer
-        jokeContainer.textContent = joke;
+            // Display the joke in the jokeContainer
+            jokeContainer.textContent = joke;
         })
         .catch(error => {
-        // Handle errors
-        console.error('Error fetching dad joke:', error);
+            // Handle errors
+            console.error('Error fetching dad joke:', error);
         });
 }
 
@@ -90,11 +90,11 @@ updateChart();
 // Function to get an inspirational quote
 function getInspirationalQuote() {
     return fetch('https://type.fit/api/quotes')
-    .then(response => response.json())
-    .then(data => {
-        let randomIndex = Math.floor(Math.random() * data.length);
-        return data[randomIndex];
-    });
+        .then(response => response.json())
+        .then(data => {
+            let randomIndex = Math.floor(Math.random() * data.length);
+            return data[randomIndex];
+        });
 }
 
 // Function to add a new habit
@@ -208,3 +208,33 @@ function saveHabitsToLocalStorage() {
 
 // Event listener for adding a new habit
 document.getElementById('addHabitBtn').addEventListener('click', addHabit);
+
+
+
+//HomeScreen Section 
+
+const startButton = document.querySelector("#start");
+const mainDash = document.querySelector("#MainDashbord");
+const startScreen = document.getElementById('start-screen');
+const uInput = document.querySelector(".uInput")
+const username = document.querySelector(".username")
+const fHabit = document.querySelector(".firstHabit")
+
+startButton.addEventListener('click', function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+    startScreen.classList.add("hide")
+    mainDash.classList.remove("hide")
+    localStorage.setItem("username", JSON.stringify(uInput.value))
+    localStorage.setItem("fhabits", JSON.stringify(fHabit.value))
+
+    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+
+    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
+    if (habitName !== '') {
+        habits.push({ name: habitName, count: 0 });
+        renderHabits();
+        updateChart();
+    }
+
+}) 
