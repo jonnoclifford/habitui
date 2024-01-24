@@ -226,7 +226,7 @@ document.getElementById('addHabitBtn').addEventListener('click', addHabit);
 //HomeScreen Section
 
 const startButton = document.querySelector("#start");
-const mainDash = document.querySelector("#MainDashbord");
+const mainDash = document.querySelector("#MainDashboard");
 const startScreen = document.getElementById('start-screen');
 const uInput = document.querySelector(".uInput")
 const username = document.querySelector(".username")
@@ -243,11 +243,11 @@ let puser = JSON.parse(localStorage.getItem('username'))
 
 if (puser !== '') {
     puserButton.innerHTML = puser;
-    puserButton.classList.add("btn-danger")
+    puserButton.classList.add("btn-light")
     puserButton.classList.add("btn")
     const puserMessage = document.createElement("div")
     puserMessage.classList.add("main-form")
-    puserMessage.innerHTML = "Do you want to continue with a previous user "
+    puserMessage.innerHTML = "Do you want to continue with a previous user:  "
     puserDiv.append(puserMessage)
     puserMessage.append(puserButton)
 }
