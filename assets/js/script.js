@@ -53,20 +53,20 @@ updateChart();
 
 // Function to add a new habit
 function addHabit() {
-  const habitName = newHabitInput.value.trim();
+    const habitName = newHabitInput.value.trim();
 
-  if (habitName !== '') {
-      habits.push({ name: habitName, count: 0 });
-      renderHabits();
-      updateChart();
-      saveHabitsToLocalStorage();
+    if (habitName !== '') {
+        habits.push({ name: habitName, count: 0 });
+        renderHabits();
+        updateChart();
+        saveHabitsToLocalStorage();
 
-      // Check if the maximum limit of habits is reached and hide the 'new-habit' section
-      if (habits.length >= 5) {
-          document.querySelector('.new-habit').style.display = 'none';
-      }
-  }
-  newHabitInput.value = '';
+        // Check if the maximum limit of habits is reached and hide the 'new-habit' section
+        if (habits.length >= 5) {
+            document.querySelector('.new-habit').style.display = 'none';
+        }
+    }
+    newHabitInput.value = '';
 }
 
 // Function to increment habit count
@@ -89,14 +89,14 @@ function decrementHabit(index) {
 
 // Function to delete a habit
 function deleteHabit(index) {
-  habits.splice(index, 1);
-  renderHabits();
-  updateChart();
-  saveHabitsToLocalStorage();
+    habits.splice(index, 1);
+    renderHabits();
+    updateChart();
+    saveHabitsToLocalStorage();
 
-  if (habits.length <= 4) {
-      document.querySelector('.new-habit').style.display = 'grid';
-  }
+    if (habits.length <= 4) {
+        document.querySelector('.new-habit').style.display = 'grid';
+    }
 }
 
 // Function to render habits in the HTML
@@ -307,3 +307,4 @@ startButton.addEventListener('click', function (event) {
     username.innerHTML = JSON.parse(localStorage.getItem('username'));
     saveHabitsToLocalStorage();
 });
+
