@@ -299,7 +299,9 @@ body.dark-mode #weather-info {
 }
 
 .main-form {
-  padding-left: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .main-logo {
