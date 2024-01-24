@@ -1,34 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
 
-  // Check if the user has a preference for dark mode
-  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Check if the user has a preference for dark mode
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Set initial dark mode state
-  if (localStorage.getItem('darkMode') === 'enabled' || (prefersDarkMode && !localStorage.getItem('darkMode'))) {
-    enableDarkMode();
-    darkModeToggle.checked = true;
-  }
-
-  // Toggle dark mode
-  darkModeToggle.addEventListener('change', function () {
-    if (darkModeToggle.checked) {
-      enableDarkMode();
-      localStorage.setItem('darkMode', 'enabled');
-    } else {
-      disableDarkMode();
-      localStorage.setItem('darkMode', 'disabled');
+    // Set initial dark mode state
+    if (localStorage.getItem('darkMode') === 'enabled' || (prefersDarkMode && !localStorage.getItem('darkMode'))) {
+        enableDarkMode();
+        darkModeToggle.checked = true;
     }
-  });
 
-  function enableDarkMode() {
-    body.classList.add('dark-mode');
-  }
+    // Toggle dark mode
+    darkModeToggle.addEventListener('change', function () {
+        if (darkModeToggle.checked) {
+            enableDarkMode();
+            localStorage.setItem('darkMode', 'enabled');
+            updateLogoForDarkMode(true);
+        } else {
+            disableDarkMode();
+            localStorage.setItem('darkMode', 'disabled');
+            updateLogoForDarkMode(false);
+        }
+    });
 
-  function disableDarkMode() {
-    body.classList.remove('dark-mode');
-  }
+    function enableDarkMode() {
+        body.classList.add('dark-mode');
+    }
+
+    function disableDarkMode() {
+        body.classList.remove('dark-mode');
+    }
+
+    function updateLogoForDarkMode(isDarkMode) {
+        // Change logo based on dark mode
+        const logoImage = document.querySelector('.logo img');
+        logoImage.src = isDarkMode ? './assets/images/HabitUI_Logo_dark.png' : './assets/images/HabitUI_Logo.png';
+    }
 });
 
 //Habits function
@@ -45,14 +53,20 @@ updateChart();
 
 // Function to add a new habit
 function addHabit() {
-    const habitName = newHabitInput.value.trim();
-    if (habitName !== '') {
-        habits.push({ name: habitName, count: 0 });
-        renderHabits();
-        updateChart();
-        saveHabitsToLocalStorage();
-    }
-    newHabitInput.value = '';
+  const habitName = newHabitInput.value.trim();
+
+  if (habitName !== '') {
+      habits.push({ name: habitName, count: 0 });
+      renderHabits();
+      updateChart();
+      saveHabitsToLocalStorage();
+
+      // Check if the maximum limit of habits is reached and hide the 'new-habit' section
+      if (habits.length >= 5) {
+          document.querySelector('.new-habit').style.display = 'none';
+      }
+  }
+  newHabitInput.value = '';
 }
 
 // Function to increment habit count
@@ -75,10 +89,14 @@ function decrementHabit(index) {
 
 // Function to delete a habit
 function deleteHabit(index) {
-    habits.splice(index, 1);
-    renderHabits();
-    updateChart();
-    saveHabitsToLocalStorage();
+  habits.splice(index, 1);
+  renderHabits();
+  updateChart();
+  saveHabitsToLocalStorage();
+
+  if (habits.length <= 4) {
+      document.querySelector('.new-habit').style.display = 'grid';
+  }
 }
 
 // Function to render habits in the HTML
@@ -91,9 +109,9 @@ function renderHabits() {
 
         habitItem.innerHTML = `
             <div class="task-text">${habit.name}: ${habit.count}</div>
-            <button title='Increase Habit' class="btn btn-success task-btn" onclick="incrementHabit(${index})">+</button>
-            <button title='Decrease Habit' class="btn btn-warning task-btn" onclick="decrementHabit(${index})">-</button>
-            <button title='Delete Habit' class="btn btn-danger task-btn" onclick="deleteHabit(${index})">x</button>
+            <button title='Increase Habit' class="btn btn-outline-success task-btn p-1 rounded-circle" style="font-weight: 700" onclick="incrementHabit(${index})">+</button>
+            <button title='Decrease Habit' class="btn btn-outline-warning task-btn p-1 rounded-circle ml-1" style="font-weight: 700" onclick="decrementHabit(${index})">-</button>
+            <button title='Delete Habit' class="btn btn-outline-danger task-btn p-1 rounded-circle ml-1" style="font-weight: 700" onclick="deleteHabit(${index})">x</button>
         `;
 
         habitsContainer.appendChild(habitItem);
@@ -210,3 +228,83 @@ function saveHabitsToLocalStorage() {
 
 // Event listener for adding a new habit
 document.getElementById('addHabitBtn').addEventListener('click', addHabit);
+
+
+
+//HomeScreen Section 
+
+const startButton = document.querySelector("#start");
+const mainDash = document.querySelector("#MainDashbord");
+const startScreen = document.getElementById('start-screen');
+const uInput = document.querySelector(".uInput")
+const username = document.querySelector(".username")
+const fHabit = document.querySelector(".firstHabit")
+
+
+//////////new
+const puserButton = document.createElement("button")
+const puserDiv = document.getElementById("previous-users")
+let puser = JSON.parse(localStorage.getItem('username'))
+
+
+
+
+if (puser !== '') {
+    puserButton.innerHTML = puser;
+    puserButton.classList.add("btn-danger")
+    puserButton.classList.add("btn")
+    const puserMessage = document.createElement("div")
+    puserMessage.classList.add("main-form")
+    puserMessage.innerHTML = "Do you want to continue with a previous user "
+    puserDiv.append(puserMessage)
+    puserMessage.append(puserButton)
+}
+
+puserButton.addEventListener("click", function (e) {
+    e.preventDefault;
+    e.stopPropagation;
+    start()
+
+
+})
+////////////new
+
+function start() {
+    startScreen.classList.add("hide")
+    mainDash.classList.remove("hide")
+
+    localStorage.setItem("fhabits", JSON.stringify(fHabit.value))
+
+    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
+
+    if (puser !== '') {
+        localStorage.setItem("username", JSON.stringify(puser))
+
+    }
+    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+
+    if (habitName !== '') {
+        habits.push({ name: habitName, count: 0 });
+        renderHabits();
+        updateChart();
+        // saveHabitsToLocalStorage();
+
+    }
+}
+
+
+startButton.addEventListener('click', function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+    // // localStorage.clear()
+    habits = []
+    habitsContainer.innerHTML = '';
+    start()
+    localStorage.setItem("username", JSON.stringify(uInput.value))
+    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+    saveHabitsToLocalStorage();
+})
+
+
+
+

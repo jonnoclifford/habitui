@@ -1,14 +1,20 @@
 //function for weather
 $(document).ready(function () {
-    // Event handler for form submission
-    $("#search-form").submit(function (event) {
-        event.preventDefault();
-        var cityName = $("#search-input").val().trim();
-        if (cityName !== "") {
-            getWeatherData(cityName);
-            $("#search-input").val("");
-        }
-    });
+  var storedCityName = localStorage.getItem('userLocation');
+
+  if (storedCityName) {
+      getWeatherData(storedCityName);
+  }
+
+  $("#search-form").submit(function (event) {
+      event.preventDefault();
+      var cityName = $("#search-input").val().trim();
+      if (cityName !== "") {
+          localStorage.setItem('userLocation', cityName);
+          getWeatherData(cityName);
+          $("#search-input").val("");
+      }
+  });
 });
 
 function getWeatherData(cityName) {
