@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (darkModeToggle.checked) {
             enableDarkMode();
             localStorage.setItem('darkMode', 'enabled');
+            updateLogoForDarkMode(true);
         } else {
             disableDarkMode();
             localStorage.setItem('darkMode', 'disabled');
+            updateLogoForDarkMode(false);
         }
     });
 
@@ -29,73 +31,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function disableDarkMode() {
         body.classList.remove('dark-mode');
     }
+
+    function updateLogoForDarkMode(isDarkMode) {
+        // Change logo based on dark mode
+        const logoImage = document.querySelector('.logo img');
+        logoImage.src = isDarkMode ? './assets/images/HabitUI_Logo_dark.png' : './assets/images/HabitUI_Logo.png';
+    }
 });
 
-//habits function
-
-const inspirationalQuoteTextContainer = document.querySelector('.quote-text');
-const inspirationalQuoteAuthorContainer = document.querySelector('.quote-author');
+//Habits function
 const habitsContainer = document.querySelector('.task-list');
 const habitsChartCanvas = document.getElementById('habitsChart');
 const newHabitInput = document.getElementById('newTaskInput');
-const jokeContainer = document.querySelector('.joke-text');
-
-function getJoke() {
-    // Set a custom User-Agent header as recommended
-    const headers = new Headers({
-        'Accept': 'application/json',
-        'User-Agent': 'YourLibraryOrWebsite (YourURLOrEmail)'
-    });
-
-    // API endpoint URL for fetching a random dad joke
-    const apiUrl = 'https://icanhazdadjoke.com/';
-
-    // Get the joke container element
-    const jokeContainer = document.querySelector('.joke-text');
-
-    // Fetch a random dad joke as JSON
-    fetch(apiUrl, { headers })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the JSON response
-            console.log(data);
-            // Access the joke using data.joke
-            const joke = data.joke;
-            console.log('Random Dad Joke:', joke);
-
-            // Display the joke in the jokeContainer
-            jokeContainer.textContent = joke;
-        })
-        .catch(error => {
-            // Handle errors
-            console.error('Error fetching dad joke:', error);
-        });
-}
-
-getJoke();
 
 let habits = JSON.parse(localStorage.getItem('habits')) || [];
-
-// Call the function to get an inspirational quote and update the DOM
-getInspirationalQuote().then(function (randomQuote) {
-    inspirationalQuoteTextContainer.innerHTML = `"${randomQuote.text}"`;
-    inspirationalQuoteAuthorContainer.innerHTML = `${randomQuote.author.split(',')[0].trim()}`;
-});
 
 // Render habits on page load
 renderHabits();
 // Update the habits chart
 updateChart();
-
-// Function to get an inspirational quote
-function getInspirationalQuote() {
-    return fetch('https://type.fit/api/quotes')
-        .then(response => response.json())
-        .then(data => {
-            let randomIndex = Math.floor(Math.random() * data.length);
-            return data[randomIndex];
-        });
-}
 
 // Function to add a new habit
 function addHabit() {
@@ -145,9 +99,9 @@ function renderHabits() {
 
         habitItem.innerHTML = `
             <div class="task-text">${habit.name}: ${habit.count}</div>
-            <button title='Increase Habit' class="btn btn-success task-btn" onclick="incrementHabit(${index})">+</button>
-            <button title='Decrease Habit' class="btn btn-warning task-btn" onclick="decrementHabit(${index})">-</button>
-            <button title='Delete Habit' class="btn btn-danger task-btn" onclick="deleteHabit(${index})">x</button>
+            <button title='Increase Habit' class="btn btn-outline-success task-btn p-1 rounded-circle" onclick="incrementHabit(${index})">+</button>
+            <button title='Decrease Habit' class="btn btn-outline-warning task-btn p-1 rounded-circle ml-1" onclick="decrementHabit(${index})">-</button>
+            <button title='Delete Habit' class="btn btn-outline-danger task-btn p-1 rounded-circle ml-1" onclick="deleteHabit(${index})">x</button>
         `;
 
         habitsContainer.appendChild(habitItem);
@@ -160,14 +114,27 @@ function updateChart() {
 
     // Check if a chart instance already exists
     if (window.myHabitsChart) {
+        // Check if the goal of 60 days is reached
+        const isGoalReached = habits.some(habit => habit.count >= 60);
+
+        if (isGoalReached) {
+            // Prompt congratulation and destroy the chart
+            congratulateUser();
+            window.myHabitsChart.destroy();
+            return;
+        }
+
         window.myHabitsChart.destroy();
     }
 
     const labels = habits.map(habit => habit.name);
     const data = habits.map(habit => habit.count);
 
-    // Generate an array of random colors for each bar
-    // const randomColors = Array.from({ length: habits.length }, () => getRandomColor());
+    // Calculate progress towards the goal of 60 days
+    const progress = data.map(count => Math.min(count / 60, 1)); // Progress capped at 1
+
+    // Generate colors based on progress
+    const colors = progress.map(p => getColorBasedOnProgress(p));
 
     window.myHabitsChart = new Chart(ctx, {
         type: 'bar',
@@ -176,7 +143,7 @@ function updateChart() {
             datasets: [{
                 label: 'Habit Count',
                 data: data,
-                backgroundColor: 'rgba(110, 74, 218, .75)',
+                backgroundColor: colors,  // Use the generated colors
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
             }]
@@ -190,16 +157,51 @@ function updateChart() {
         }
     });
 }
-
-// Function to generate a random color
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+// Function to congratulate the user
+function congratulateUser() {
+    const congratsMessage = "Congratulations! You've reached your 60-day goal!";
+    alert(congratsMessage)
 }
+// Function to generate a color based on progress
+function getColorBasedOnProgress(progress) {
+    // Use HSL color representation to control darkness
+    const hue = 280;  // Green hue
+    const saturation = 100;  // Full saturation
+    const lightness = 25 + 50 * (1 - progress);  // Adjust lightness based on progress (darker as progress increases)
+
+    // Convert HSL to RGB
+    const rgb = hslToRgb(hue / 360, saturation / 100, lightness / 100);
+
+    // Format RGB as rgba for Chart.js
+    return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.75)`;
+}
+
+// Function to convert HSL to RGB
+function hslToRgb(h, s, l) {
+    let r, g, b;
+
+    if (s === 0) {
+        r = g = b = l; // Achromatic
+    } else {
+        const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+        };
+
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
 
 // Function to save habits to local storage
 function saveHabitsToLocalStorage() {

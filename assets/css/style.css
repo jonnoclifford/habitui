@@ -35,16 +35,16 @@ body {
 }
 
 /* Welcome message styles inside the sidebar */
-.sidebar .welcome {
+.sidebar .welcome h1{
   text-align: left;
   font-size: 18px;
-  color: #333;
   padding-top: 40px;
 }
 
 /* Weather box styles inside the sidebar */
-.sidebar .weather {
-  margin-top: 20px;
+.sidebar .weather h2{
+  margin-top: 0px;
+  font-size: 18px;
 }
 
 /* Main content styles */
@@ -61,7 +61,7 @@ body {
 
 .main .row {
   padding: 15px;
-  width: calc(100% - 20px);
+  /* width: 100%; */
 }
 
 /* Style the username */
@@ -92,8 +92,8 @@ body {
 /* Style the tasks section */
 .tasks {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 10px; */
 }
 
 /* Style the task list */
@@ -128,6 +128,9 @@ body {
   margin-left: 10px;
 }
 
+.btn-space {
+  padding-left: 2px;
+}
 /* Custom styles for each task item */
 .task-item {
   display: flex;
@@ -162,8 +165,8 @@ body {
 /* Style the progress section */
 .prog {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 10px; */
   max-height: 50vh;
 }
 
@@ -173,7 +176,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  margin: 20px 0;
+  text-align: center;
+  /* margin: 20px 0; */
   clear: both;
 }
 
@@ -181,7 +185,7 @@ body {
 .joke-text {
   font-size: 1.25rem;
   text-align: center;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
 }
@@ -202,8 +206,16 @@ body {
 
 /* Dark mode styles */
 body.dark-mode {
-  background-color: #333;
+  background-color: #000000;
+}
+
+/* Add explicit text color for dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode span,
+body.dark-mode #weather-info {
   color: #fff;
+  /* Set the desired text color for dark mode */
 }
 
 /* Toggle switch styles */
@@ -238,7 +250,7 @@ body.dark-mode {
 #current-weather {
   padding: 10px;
   margin-top: 20px;
-  margin-bottom: ;
+  margin-bottom: 0px;
 }
 
 #weather-info {
@@ -264,7 +276,7 @@ body.dark-mode {
     /* Adjust the maximum height for smaller screens */
   }
 
-  .new-habbit {
+  .new-habit {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 2rem;
