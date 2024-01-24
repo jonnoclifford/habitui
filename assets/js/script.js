@@ -220,21 +220,68 @@ const uInput = document.querySelector(".uInput")
 const username = document.querySelector(".username")
 const fHabit = document.querySelector(".firstHabit")
 
-startButton.addEventListener('click', function (event) {
-    event.preventDefault()
-    event.stopPropagation()
+
+//////////new
+const puserButton = document.createElement("button")
+const puserDiv = document.getElementById("previous-users")
+let puser = JSON.parse(localStorage.getItem('username'))
+
+
+
+
+if (puser !== '') {
+    puserButton.innerHTML = puser;
+    const puserMessage = document.createElement("div")
+    puserMessage.innerHTML = "Do you want to continue with a previous user "
+    puserDiv.append(puserMessage)
+    puserMessage.append(puserButton)
+}
+
+puserButton.addEventListener("click", function (e) {
+    e.preventDefault;
+    e.stopPropagation;
+    start()
+
+
+})
+////////////new
+
+function start() {
     startScreen.classList.add("hide")
     mainDash.classList.remove("hide")
-    localStorage.setItem("username", JSON.stringify(uInput.value))
+
     localStorage.setItem("fhabits", JSON.stringify(fHabit.value))
 
+    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
+
+    if (puser !== '') {
+        localStorage.setItem("username", JSON.stringify(puser))
+
+    }
     username.innerHTML = (JSON.parse(localStorage.getItem('username')))
 
-    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
     if (habitName !== '') {
         habits.push({ name: habitName, count: 0 });
         renderHabits();
         updateChart();
-    }
+        // saveHabitsToLocalStorage();
 
-}) 
+    }
+}
+
+
+startButton.addEventListener('click', function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+    // // localStorage.clear()
+    habits = []
+    habitsContainer.innerHTML = '';
+    start()
+    localStorage.setItem("username", JSON.stringify(uInput.value))
+    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+    saveHabitsToLocalStorage();
+})
+
+
+
+

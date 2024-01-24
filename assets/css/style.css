@@ -280,3 +280,9 @@ body.dark-mode {
 .hide {
   display: none;
 }
+
+
+.wrapper {
+  margin: 100px auto 0 auto;
+  max-width: 600px;
+}
