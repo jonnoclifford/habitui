@@ -1,5 +1,4 @@
 # habitui
-# Project Overview:
 
 The project is a web application named "HabitUI." It is  a habit tracking and management tool, featuring sections for inspirational quotes, habit tracking, and a joke generator. Users can add, track, and delete habits, view their progress on a chart, and get a random joke.
 
@@ -27,7 +26,23 @@ Usage: The JavaScript function getInspirationalQuote() uses the fetch API to mak
 
 
 ## Dad Joke API Call:
+
 Endpoint: https://icanhazdadjoke.com/
 Description: Fetches a random dad joke.
 Usage: The JavaScript function getJoke() uses the fetch API to make an asynchronous request to the endpoint.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Credit 
+
+N/A
+
+## Link
+
+Feel free to visit our project webpage:
+https://jonnoclifford.github.io/habitui/
+
+![Screenshot (42)](https://github.com/jonnoclifford/habitui/assets/147996856/01780846-c49b-43f9-ae7e-f90b548f2baa)
 
