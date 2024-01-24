@@ -53,14 +53,20 @@ updateChart();
 
 // Function to add a new habit
 function addHabit() {
-    const habitName = newHabitInput.value.trim();
-    if (habitName !== '') {
-        habits.push({ name: habitName, count: 0 });
-        renderHabits();
-        updateChart();
-        saveHabitsToLocalStorage();
-    }
-    newHabitInput.value = '';
+  const habitName = newHabitInput.value.trim();
+
+  if (habitName !== '') {
+      habits.push({ name: habitName, count: 0 });
+      renderHabits();
+      updateChart();
+      saveHabitsToLocalStorage();
+
+      // Check if the maximum limit of habits is reached and hide the 'new-habit' section
+      if (habits.length >= 5) {
+          document.querySelector('.new-habit').style.display = 'none';
+      }
+  }
+  newHabitInput.value = '';
 }
 
 // Function to increment habit count
@@ -83,10 +89,14 @@ function decrementHabit(index) {
 
 // Function to delete a habit
 function deleteHabit(index) {
-    habits.splice(index, 1);
-    renderHabits();
-    updateChart();
-    saveHabitsToLocalStorage();
+  habits.splice(index, 1);
+  renderHabits();
+  updateChart();
+  saveHabitsToLocalStorage();
+
+  if (habits.length <= 4) {
+      document.querySelector('.new-habit').style.display = 'grid';
+  }
 }
 
 // Function to render habits in the HTML
@@ -99,9 +109,9 @@ function renderHabits() {
 
         habitItem.innerHTML = `
             <div class="task-text">${habit.name}: ${habit.count}</div>
-            <button title='Increase Habit' class="btn btn-outline-success task-btn p-1 rounded-circle" onclick="incrementHabit(${index})">+</button>
-            <button title='Decrease Habit' class="btn btn-outline-warning task-btn p-1 rounded-circle ml-1" onclick="decrementHabit(${index})">-</button>
-            <button title='Delete Habit' class="btn btn-outline-danger task-btn p-1 rounded-circle ml-1" onclick="deleteHabit(${index})">x</button>
+            <button title='Increase Habit' class="btn btn-outline-success task-btn p-1 rounded-circle" style="font-weight: 700" onclick="incrementHabit(${index})">+</button>
+            <button title='Decrease Habit' class="btn btn-outline-warning task-btn p-1 rounded-circle ml-1" style="font-weight: 700" onclick="decrementHabit(${index})">-</button>
+            <button title='Delete Habit' class="btn btn-outline-danger task-btn p-1 rounded-circle ml-1" style="font-weight: 700" onclick="deleteHabit(${index})">x</button>
         `;
 
         habitsContainer.appendChild(habitItem);
