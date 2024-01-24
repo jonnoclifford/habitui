@@ -231,6 +231,8 @@ let puser = JSON.parse(localStorage.getItem('username'))
 
 if (puser !== '') {
     puserButton.innerHTML = puser;
+    puserButton.classList.add("btn-danger")
+    puserButton.classList.add("btn")
     const puserMessage = document.createElement("div")
     puserMessage.classList.add("main-form")
     puserMessage.innerHTML = "Do you want to continue with a previous user "
