@@ -231,10 +231,10 @@ document.getElementById('addHabitBtn').addEventListener('click', addHabit);
 
 
 
-//HomeScreen Section 
+//HomeScreen Section
 
 const startButton = document.querySelector("#start");
-const mainDash = document.querySelector("#MainDashbord");
+const mainDash = document.querySelector("#MainDashboard");
 const startScreen = document.getElementById('start-screen');
 const uInput = document.querySelector(".uInput")
 const username = document.querySelector(".username")
@@ -251,14 +251,19 @@ let puser = JSON.parse(localStorage.getItem('username'))
 
 if (puser !== '') {
     puserButton.innerHTML = puser;
-    puserButton.classList.add("btn-danger")
+    puserButton.classList.add("btn-light")
     puserButton.classList.add("btn")
     const puserMessage = document.createElement("div")
     puserMessage.classList.add("main-form")
-    puserMessage.innerHTML = "Do you want to continue with a previous user "
+    puserMessage.innerHTML = "Do you want to continue with a previous user:  "
     puserDiv.append(puserMessage)
     puserMessage.append(puserButton)
 }
+
+if (puser === null) {
+    puserDiv.classList.add("hide")
+}
+
 
 puserButton.addEventListener("click", function (e) {
     e.preventDefault;
@@ -270,41 +275,35 @@ puserButton.addEventListener("click", function (e) {
 ////////////new
 
 function start() {
-    startScreen.classList.add("hide")
-    mainDash.classList.remove("hide")
+    startScreen.classList.add("hide");
+    mainDash.classList.remove("hide");
 
-    localStorage.setItem("fhabits", JSON.stringify(fHabit.value))
+    // Remove the user's location from local storage
+    localStorage.removeItem('userLocation');
 
-    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
+    localStorage.setItem("fhabits", JSON.stringify(fHabit.value));
+
+    const habitName = JSON.parse(localStorage.getItem('fhabits'));
 
     if (puser !== '') {
-        localStorage.setItem("username", JSON.stringify(puser))
-
+        localStorage.setItem("username", JSON.stringify(puser));
     }
-    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+    username.innerHTML = JSON.parse(localStorage.getItem('username'));
 
     if (habitName !== '') {
         habits.push({ name: habitName, count: 0 });
         renderHabits();
         updateChart();
-        // saveHabitsToLocalStorage();
-
     }
 }
 
-
 startButton.addEventListener('click', function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    // // localStorage.clear()
-    habits = []
+    event.preventDefault();
+    event.stopPropagation();
+    habits = [];
     habitsContainer.innerHTML = '';
-    start()
-    localStorage.setItem("username", JSON.stringify(uInput.value))
-    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+    start();
+    localStorage.setItem("username", JSON.stringify(uInput.value));
+    username.innerHTML = JSON.parse(localStorage.getItem('username'));
     saveHabitsToLocalStorage();
-})
-
-
-
-
+});
