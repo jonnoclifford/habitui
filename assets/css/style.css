@@ -287,3 +287,14 @@ body.dark-mode {
 .main-form {
   padding-left: 8rem;
 }
+
+.main-logo {
+  transition: 0.7s;
+}
+
+/*adding in the zoom in animation*/
+
+
+.main-logo:hover {
+  transform: scale(1.09);
+}
