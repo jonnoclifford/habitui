@@ -283,3 +283,7 @@ body.dark-mode {
 .hide {
   display: none;
 }
+
+.main-form {
+  padding-left: 4rem;
+}
