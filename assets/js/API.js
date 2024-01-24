@@ -35,26 +35,29 @@ function getWeatherData(cityName) {
 
 function updateWeatherUI(data) {
     var cityName = data.name;
-    var temperature = data.main.temp;
+    var temperatureKelvin = data.main.temp;
+    var temperatureKelvin = kelvinToCelsius(temperatureKelvin);
     var humidity = data.main.humidity;
     var weatherDescription = data.weather[0].description;
     var weatherIcon = data.weather[0].icon;
     var iconUrl = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
-    var weatherContent =
-    "<div class='weather-box'>" +
-    "<h2>" +
-    "<img src='" + iconUrl + "' alt='Weather Icon'>" +
-    cityName +
-    "</h2>" +
-    "<p>Temperature: " + temperature + " K</p>" +
-    "<p>Humidity: " + humidity + "%</p>" +
-    "<p>Description: " + weatherDescription + "</p>" +
-    "</div>";
+    var weatherContent = "<div class='weather-box'>" +
+                         "<h2>" +
+                         "<img src='" + iconUrl + "' alt='Weather Icon'>" +
+                         cityName +
+                         "</h2>" +
+                         "<p>Temperature: " + temperatureKelvin + " °C</p>" +
+                         "<p>Humidity: " + humidity + "%</p>" +
+                         "<p>Description: " + weatherDescription + "</p>" +
+                         "</div>";
 
     $("#current-weather").html(weatherContent);
 }
 
+function kelvinToCelsius(kelvin) {
+    return (kelvin - 273.15).toFixed(2);
+}
 //joke function
 
 const jokeContainer = document.querySelector('.joke-text');

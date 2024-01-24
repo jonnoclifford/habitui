@@ -125,17 +125,18 @@ function updateChart() {
     // Check if a chart instance already exists
     if (window.myHabitsChart) {
         // Check if the goal of 60 days is reached
-        const isGoalReached = habits.some(habit => habit.count >= 60);
+        const completedHabit = habits.find(habit => habit.count >= 60);
 
-        if (isGoalReached) {
+        if (completedHabit) {
             // Prompt congratulation and destroy the chart
-            congratulateUser();
+            displayCongratulationsModal(completedHabit.name);
             window.myHabitsChart.destroy();
             return;
         }
 
         window.myHabitsChart.destroy();
     }
+
 
     const labels = habits.map(habit => habit.name);
     const data = habits.map(habit => habit.count);
@@ -168,10 +169,17 @@ function updateChart() {
     });
 }
 // Function to congratulate the user
-function congratulateUser() {
-    const congratsMessage = "Congratulations! You've reached your 60-day goal!";
-    alert(congratsMessage)
+function displayCongratulationsModal(completedHabit) {
+    // Set the congratulations message
+    var congratulationsMessage = `Congratulations! You have completed 60 days of ${completedHabit}.`;
+
+    // Set the message in the modal body
+    document.getElementById('congratulationsMessage').innerText = congratulationsMessage;
+
+    // Trigger the Bootstrap modal
+    $('#congratulationsModal').modal('show');
 }
+
 // Function to generate a color based on progress
 function getColorBasedOnProgress(progress) {
     // Use HSL color representation to control darkness
@@ -299,3 +307,4 @@ startButton.addEventListener('click', function (event) {
     username.innerHTML = JSON.parse(localStorage.getItem('username'));
     saveHabitsToLocalStorage();
 });
+
