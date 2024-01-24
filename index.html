@@ -38,19 +38,6 @@
     </div>
 
 
-<div id="habitContainer"></div>
-
-      <!-- Habits -->
-      <div class="row d-flex justify-content-between flex-wrap">
-        <div class="tasks col-lg-7 col-sm-12" style="padding-top: 10px;">
-          <h3 style="text-align: center;">Habits</h3>
-          <div class="container task-container">
-            <ul class="task-list">
-            </ul>
-            <div class="new-habit">
-              <input type="text" class="rounded" id="newTaskInput" placeholder="Enter new Habit">
-              <button class="btn btn-primary" id="addHabitBtn" onclick="addHabit()">Add</button>
-            </div>
     <div id="MainDashbord" class="hide">
       <!-- Sidebar -->
       <div class="sidebar">
@@ -90,13 +77,13 @@
         </div>
       </div>
 
-    <!-- Main content -->
-    <div class="main">
-      <div class="quote">
-        <!--Inspirational quote -->
-        <p class="quote-text"></p>
-        <p class="quote-author"></p>
-      </div>
+      <!-- Main content -->
+      <div class="main">
+        <div class="quote">
+          <!--Inspirational quote -->
+          <p class="quote-text"></p>
+          <p class="quote-author"></p>
+        </div>
 
         <!-- Habits -->
         <div class="row d-flex flex-wrap">
@@ -130,6 +117,104 @@
   </div>
   </div>
 
+  <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="./assets/js/API.js"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>HabitUI</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container w-100" style="padding-top: 20px;">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="header">
+        <div class="logo">
+          <img src="./assets/images/HabitUI_Logo.png" alt="HabitUI logo" />
+        </div>
+
+        <div class="welcome">
+          <h1>Welcome, <span class="username">username</span></h1>
+        </div>
+
+        <div class="toggle-container">
+          <label class="toggle-label">
+            <span>Dark Mode</span>
+            <input type="checkbox" class="toggle-input" id="darkModeToggle">
+          </label>
+        </div>
+      </div>
+
+      <div class="weather">
+        <!-- City search box -->
+        <div class="search-box">
+          <form id="search-form">
+            <h2>Enter City:</h2>
+            <input type="text" id="search-input" placeholder="E.g., London">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+        <!-- Display weather information -->
+        <div id="weather-info">
+          <h2>Weather Information:</h2>
+          <!-- Display weather details here -->
+          <div id="current-weather" class="weather-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main">
+      <div class="quote">
+        <!--Inspirational quote -->
+        <p class="quote-text"></p>
+        <p class="quote-author"></p>
+      </div>
+
+<div id="habitContainer"></div>
+
+      <!-- Habits -->
+      <div class="row d-flex justify-content-between flex-wrap">
+        <div class="tasks col-lg-7 col-sm-12" style="padding-top: 10px;">
+          <h3 style="text-align: center;">Habits</h3>
+          <div class="container task-container">
+            <ul class="task-list">
+            </ul>
+            <div class="new-habit">
+              <input type="text" class="rounded" id="newTaskInput" placeholder="Enter new Habit">
+              <button class="btn btn-primary" id="addHabitBtn" onclick="addHabit()">Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog col-lg-5 col-sm-12" style="padding-top: 10px;">
+          <h3 style="text-align: center;">Progress</h3>
+          <canvas id="habitsChart" width="auto" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- Joke Generator -->
+      <div class="joke">
+        <h4 style="text-align: center;">Joke Generator</h4>
+        <p class="joke-text"></p>
+        <button id="joke-button" class="btn btn-primary w-25" style="background-color: rgba(110, 74, 218, .75);" onclick="getJoke()">Make me laugh!</button>
+      </div>
+    </div>
+  </div>
+
   <!-- models-->
   <div class="modal fade" id="congratulationsModal" tabindex="-1" role="dialog" aria-labelledby="congratulationsModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -156,6 +241,6 @@
 <script src="./assets/js/script.js"></script>
 <script src="./assets/js/API.js"></script>
 </body>
-
-
 </html>
+
+
