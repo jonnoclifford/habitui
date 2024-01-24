@@ -125,11 +125,17 @@ function updateChart() {
     // Check if a chart instance already exists
     if (window.myHabitsChart) {
         // Check if the goal of 60 days is reached
-        const completedHabit = habits.find(habit => habit.count >= 60);
+        const completedHabit = habits.find(habit => habit.count >= 30);
 
         if (completedHabit) {
             // Prompt congratulation and destroy the chart
-            displayCongratulationsModal(completedHabit.name);
+            displayCongratulationsModal(completedHabit);
+            const completedHabitIndex = habits.indexOf(completedHabit);
+
+            habits.splice(completedHabitIndex, 1);
+
+            saveHabitsToLocalStorage();
+
             window.myHabitsChart.destroy();
             return;
         }
@@ -142,7 +148,7 @@ function updateChart() {
     const data = habits.map(habit => habit.count);
 
     // Calculate progress towards the goal of 60 days
-    const progress = data.map(count => Math.min(count / 60, 1)); // Progress capped at 1
+    const progress = data.map(count => Math.min(count / 30, 1)); // Progress capped at 1
 
     // Generate colors based on progress
     const colors = progress.map(p => getColorBasedOnProgress(p));
