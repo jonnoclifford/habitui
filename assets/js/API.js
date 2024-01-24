@@ -1,14 +1,20 @@
 //function for weather
 $(document).ready(function () {
-    // Event handler for form submission
-    $("#search-form").submit(function (event) {
-        event.preventDefault();
-        var cityName = $("#search-input").val().trim();
-        if (cityName !== "") {
-            getWeatherData(cityName);
-            $("#search-input").val("");
-        }
-    });
+  var storedCityName = localStorage.getItem('userLocation');
+
+  if (storedCityName) {
+      getWeatherData(storedCityName);
+  }
+
+  $("#search-form").submit(function (event) {
+      event.preventDefault();
+      var cityName = $("#search-input").val().trim();
+      if (cityName !== "") {
+          localStorage.setItem('userLocation', cityName);
+          getWeatherData(cityName);
+          $("#search-input").val("");
+      }
+  });
 });
 
 function getWeatherData(cityName) {
@@ -35,15 +41,16 @@ function updateWeatherUI(data) {
     var weatherIcon = data.weather[0].icon;
     var iconUrl = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
-    var weatherContent = "<div class='weather-box'>" +
-                         "<h2>" +
-                         "<img src='" + iconUrl + "' alt='Weather Icon'>" +
-                         cityName +
-                         "</h2>" +
-                         "<p>Temperature: " + temperature + " K</p>" +
-                         "<p>Humidity: " + humidity + "%</p>" +
-                         "<p>Description: " + weatherDescription + "</p>" +
-                         "</div>";
+    var weatherContent =
+    "<div class='weather-box'>" +
+    "<h2>" +
+    "<img src='" + iconUrl + "' alt='Weather Icon'>" +
+    cityName +
+    "</h2>" +
+    "<p>Temperature: " + temperature + " K</p>" +
+    "<p>Humidity: " + humidity + "%</p>" +
+    "<p>Description: " + weatherDescription + "</p>" +
+    "</div>";
 
     $("#current-weather").html(weatherContent);
 }
