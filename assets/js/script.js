@@ -223,7 +223,7 @@ document.getElementById('addHabitBtn').addEventListener('click', addHabit);
 
 
 
-//HomeScreen Section 
+//HomeScreen Section
 
 const startButton = document.querySelector("#start");
 const mainDash = document.querySelector("#MainDashbord");
@@ -262,41 +262,35 @@ puserButton.addEventListener("click", function (e) {
 ////////////new
 
 function start() {
-    startScreen.classList.add("hide")
-    mainDash.classList.remove("hide")
+  startScreen.classList.add("hide");
+  mainDash.classList.remove("hide");
 
-    localStorage.setItem("fhabits", JSON.stringify(fHabit.value))
+  // Remove the user's location from local storage
+  localStorage.removeItem('userLocation');
 
-    const habitName = (JSON.parse(localStorage.getItem('fhabits')))
+  localStorage.setItem("fhabits", JSON.stringify(fHabit.value));
 
-    if (puser !== '') {
-        localStorage.setItem("username", JSON.stringify(puser))
+  const habitName = JSON.parse(localStorage.getItem('fhabits'));
 
-    }
-    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
+  if (puser !== '') {
+      localStorage.setItem("username", JSON.stringify(puser));
+  }
+  username.innerHTML = JSON.parse(localStorage.getItem('username'));
 
-    if (habitName !== '') {
-        habits.push({ name: habitName, count: 0 });
-        renderHabits();
-        updateChart();
-        // saveHabitsToLocalStorage();
-
-    }
+  if (habitName !== '') {
+      habits.push({ name: habitName, count: 0 });
+      renderHabits();
+      updateChart();
+  }
 }
 
-
 startButton.addEventListener('click', function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    // // localStorage.clear()
-    habits = []
-    habitsContainer.innerHTML = '';
-    start()
-    localStorage.setItem("username", JSON.stringify(uInput.value))
-    username.innerHTML = (JSON.parse(localStorage.getItem('username')))
-    saveHabitsToLocalStorage();
-})
-
-
-
-
+  event.preventDefault();
+  event.stopPropagation();
+  habits = [];
+  habitsContainer.innerHTML = '';
+  start();
+  localStorage.setItem("username", JSON.stringify(uInput.value));
+  username.innerHTML = JSON.parse(localStorage.getItem('username'));
+  saveHabitsToLocalStorage();
+});
