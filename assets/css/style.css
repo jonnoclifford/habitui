@@ -11,9 +11,12 @@ body {
 
 /* Sidebar styles */
 .sidebar {
-  width: 25%; /* Set the width of the sidebar */
-  float: left; /* Float the sidebar to the left */
-  padding-right: 20px; /* Add some right padding for better separation */
+  width: 25%;
+  /* Set the width of the sidebar */
+  float: left;
+  /* Float the sidebar to the left */
+  padding-right: 20px;
+  /* Add some right padding for better separation */
 }
 
 /* Header styles inside the sidebar */
@@ -23,8 +26,10 @@ body {
 
 /* Logo styles */
 .sidebar .logo img {
-  width: 100%; /* Make the logo fill the width of its container */
-  max-height: auto; /* Set a maximum height for the logo */
+  width: 100%;
+  /* Make the logo fill the width of its container */
+  max-height: auto;
+  /* Set a maximum height for the logo */
   border-radius: 10px;
   padding-top: 10px;
 }
@@ -44,9 +49,12 @@ body {
 
 /* Main content styles */
 .main {
-  width: 75%; /* Set the width of the main content */
-  float: left; /* Float the main content to the left */
-  padding-left: 20px; /* Add some left padding for better separation */
+  width: 75%;
+  /* Set the width of the main content */
+  float: left;
+  /* Float the main content to the left */
+  padding-left: 20px;
+  /* Add some left padding for better separation */
   border-left: 1px solid #ccc;
   box-sizing: border-box;
 }
@@ -217,7 +225,8 @@ body.dark-mode #weather-info {
   position: relative;
   top: 0;
   left: 0;
-  margin: 20px 0; /* Add some margin for spacing */
+  margin: 20px 0;
+  /* Add some margin for spacing */
 }
 
 /* Adjust the dark mode label to ensure proper alignment */
@@ -231,6 +240,7 @@ body.dark-mode #weather-info {
 .toggle-label.dark-mode {
   color: #fff;
 }
+
 /* Ensure the dark mode input aligns with the label */
 .toggle-input {
   margin-left: 10px;
@@ -251,16 +261,21 @@ body.dark-mode #weather-info {
 
 /* Media query for mobile view */
 @media screen and (max-width: 767px) {
+
   .sidebar,
   .main {
-    width: 100%; /* Make both sidebar and main content full width on small screens */
-    float: none; /* Remove the float on small screens */
-    padding: 0; /* Remove padding on small screens */
+    width: 100%;
+    /* Make both sidebar and main content full width on small screens */
+    float: none;
+    /* Remove the float on small screens */
+    padding: 0;
+    /* Remove padding on small screens */
   }
 
   /* Adjust the logo size for smaller screens */
   .sidebar .logo img {
-    max-height: 40px; /* Adjust the maximum height for smaller screens */
+    max-height: 40px;
+    /* Adjust the maximum height for smaller screens */
   }
 
   .new-habit {
@@ -272,4 +287,28 @@ body.dark-mode #weather-info {
   .tasks {
     margin-bottom: 30px;
   }
+}
+
+.wrapper {
+  margin: 100px auto 0 auto;
+  max-width: 600px;
+}
+
+.hide {
+  display: none;
+}
+
+.main-form {
+  padding-left: 8rem;
+}
+
+.main-logo {
+  transition: 0.7s;
+}
+
+/*adding in the zoom in animation*/
+
+
+.main-logo:hover {
+  transform: scale(1.09);
 }
