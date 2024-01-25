@@ -288,6 +288,10 @@ body.dark-mode #weather-info {
     margin-bottom: 30px;
   }
 }
+#habitsChart {
+  width: 100%; /* Set the width to 100% for responsiveness */
+  height: auto; /* Allow the height to adjust proportionally */
+}
 
 .wrapper {
   margin: 100px auto 0 auto;
