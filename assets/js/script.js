@@ -177,7 +177,7 @@ function updateChart() {
 // Function to congratulate the user
 function displayCongratulationsModal(completedHabit) {
     // Set the congratulations message
-    var congratulationsMessage = `Congratulations! You have completed 60 days of ${completedHabit}.`;
+    var congratulationsMessage = `Congratulations! You have completed 30 days of ${completedHabit}.`;
 
     // Set the message in the modal body
     document.getElementById('congratulationsMessage').innerText = congratulationsMessage;
