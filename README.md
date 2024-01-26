@@ -54,7 +54,9 @@ The following image shows the appearance and functionality of the main dashboard
 
 [Link to the deployed website](https://jonnoclifford.github.io/habitui/)
 
-[Link to the code repository](https://github.com/jonnoclifford/habitui)
+[Link to the code repository](https://github.com/jonnoclifford/habitui) 
+
+[Link to the presentation](https://onedrive.live.com/edit?id=7FA49A8B13F55D5B!945&resid=7FA49A8B13F55D5B!945&ithint=file%2cpptx&authkey=!AC0TYnb_3Ed84go&wdo=2&cid=7fa49a8b13f55d5b)
 
 ## Credit
 
